@@ -1,0 +1,24 @@
+# 子仓为独立 Git 仓库,不纳入项目总仓
+# 注:实际目录名以 project.config.yaml 的 SUBREPO_* 为准;
+#     初始化流程会将下列三行替换为真实目录名。
+/{{SUBREPO_BACKEND_DIR}}/
+/{{SUBREPO_ADMIN_DIR}}/
+/{{SUBREPO_APP_DIR}}/
+# 当前子仓目录（初始化后替换为上方占位符对应值）
+/ai-project-server/
+/ai-project-admin-web/
+/ai-project-uniapp/
+
+# 项目身份与凭据(本机)
+project.config.yaml
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+.claude/

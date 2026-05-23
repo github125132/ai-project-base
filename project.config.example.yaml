@@ -1,0 +1,47 @@
+# 项目身份配置(初始化模板)
+#
+# 用途:本仓为通用基线项目模板。新项目首次接手时,AI 读取本文件,
+#       将其中所有令牌应用到代码、文档、目录名、Git 远端、数据库配置等位置。
+#
+# 使用方式(已简化为 AI 交互式):
+#   AI 向用户问 4 个问题(PROJECT_CODE / PROJECT_NAME_CN / PROJECT_DESC / PROJECT_THEME)
+#   → 其余字段自动推导 → 用户确认 → AI 生成 project.config.yaml 并执行令牌替换
+#
+# 命名约定:
+#   - 令牌引用形式统一为 {{TOKEN_NAME}}
+#   - 文档与代码中出现的 {{TOKEN_NAME}} 由初始化流程统一替换为本文件对应值
+#
+# 默认值用 gap 演示,实际新项目应改写为自己的代码与名称。
+
+# ===== 项目身份(用户必填,4 项) =====
+PROJECT_CODE: gap                                  # [必填] 短代码,小写,用于目录/库/包/权限码前缀
+PROJECT_NAME_CN: "中药材GAP基地全流程服务平台"      # [必填] 中文全称,出现在 README、菜单、UI 顶栏
+PROJECT_NAME_EN: "GAP Base Platform"               # [推导] → PROJECT_CODE 大写,可覆盖
+PROJECT_DESC: "面向中药材规范化种植基地的 GAP 合规与全流程服务平台"  # [必填] 一句话描述
+PROJECT_THEME: "专业合规、政务级、药企认可、科技清爽、绿色中药材主题"  # [必填] 风格定位
+
+# ===== 子仓目录与远端 =====
+# 推导规则: {PROJECT_CODE}-server / {PROJECT_CODE}-admin-web / {PROJECT_CODE}-uniapp
+SUBREPO_BACKEND_DIR: gap-server                    # [推导] 后端子仓本地目录
+SUBREPO_ADMIN_DIR: gap-admin-web                   # [推导] 管理端子仓本地目录
+SUBREPO_APP_DIR: gap-uniapp                        # [推导] 移动端子仓本地目录
+
+GIT_INTERNAL_GROUP: qnkj                           # [必填] 内网 Git 仓库分组/命名空间,可从根仓库 remote URL 提取
+# GIT_INTERNAL_HOST/USER/USER_NAME/USER_EMAIL 由根目录 .env 注入
+
+# ===== 后端(均由 PROJECT_CODE 推导,可覆盖) =====
+# 推导规则见 docs/00-项目初始化引导.md 第二步
+BACKEND_MODULE_NAME: yudao-module-gap              # [推导] ruoyi-vue-pro 业务模块名
+BACKEND_PACKAGE: cn.iocoder.yudao.module.gap       # [推导] Java 顶层包
+API_PREFIX_ADMIN: /admin-api/gap                   # [推导] 管理端 API 前缀
+API_PREFIX_APP: /app-api/gap                       # [推导] 移动端 API 前缀
+PERM_PREFIX: gap                                   # [推导] 权限码前缀,形如 {{PERM_PREFIX}}:{资源}:{动作}
+
+# ===== 数据库(均由 PROJECT_CODE 推导,可覆盖) =====
+DB_NAME: gap                                       # [推导] MySQL 库名
+DB_DUMP_FILE: gap.sql                              # [推导] 业务初始化 SQL 文件名(位于 backend/sql/mysql/)
+# MYSQL_HOST/PORT/USERNAME/PASSWORD 由根目录 .env 注入
+
+# ===== 前端(均由 PROJECT_CODE 推导,可覆盖) =====
+ADMIN_VIEW_ROOT: gap                               # [推导] 管理端 src/views/{{ADMIN_VIEW_ROOT}}/... 目录
+ADMIN_API_ROOT: gap                                # [推导] 管理端 src/api/{{ADMIN_API_ROOT}}/... 目录
