@@ -6,10 +6,10 @@
 
 | 仓库 | 远端 URL 模板 | 本地子目录 | 职责 |
 |------|---------------|------------|------|
-| 项目总仓 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{PROJECT_CODE}}.git` | `<PROJECT_ROOT>/` | 项目文档、总体方案、协作规范、仓库关系 |
-| 后端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_BACKEND_DIR}}.git` | `{{SUBREPO_BACKEND_DIR}}/` | Java 后端 |
-| 管理端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_ADMIN_DIR}}.git` | `{{SUBREPO_ADMIN_DIR}}/` | Vue3 管理后台 |
-| 移动端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_APP_DIR}}.git` | `{{SUBREPO_APP_DIR}}/` | uniapp 移动端 |
+| 项目总仓 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/gap.git` | `<PROJECT_ROOT>/` | 项目文档、总体方案、协作规范、仓库关系 |
+| 后端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-server.git` | `ai-project-server/` | Java 后端 |
+| 管理端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-admin-web.git` | `ai-project-admin-web/` | Vue3 管理后台 |
+| 移动端仓库 | `http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-uniapp.git` | `ai-project-uniapp/` | uniapp 移动端 |
 
 `<PROJECT_ROOT>` 为本机项目根目录,按实际情况替换。
 
@@ -18,9 +18,9 @@
 根仓 `.gitignore` 必须忽略:
 
 ```gitignore
-/{{SUBREPO_BACKEND_DIR}}/
-/{{SUBREPO_ADMIN_DIR}}/
-/{{SUBREPO_APP_DIR}}/
+/ai-project-server/
+/ai-project-admin-web/
+/ai-project-uniapp/
 
 project.config.yaml
 .env
@@ -46,7 +46,7 @@ git config user.email "$GIT_USER_EMAIL"
 ```bash
 cd <PROJECT_ROOT>
 git init
-git remote add origin "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{PROJECT_CODE}}.git"
+git remote add origin "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/gap.git"
 git config user.name  "$GIT_USER_NAME"
 git config user.email "$GIT_USER_EMAIL"
 ```
@@ -62,8 +62,8 @@ git config user.email "$GIT_USER_EMAIL"
 ## 5. 初始化后端仓
 
 ```bash
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_BACKEND_DIR}}.git" {{SUBREPO_BACKEND_DIR}}
-cd {{SUBREPO_BACKEND_DIR}}
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-server.git" ai-project-server
+cd ai-project-server
 git config user.name  "$GIT_USER_NAME"
 git config user.email "$GIT_USER_EMAIL"
 ```
@@ -80,8 +80,8 @@ git remote -v
 ## 6. 初始化管理端仓
 
 ```bash
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_ADMIN_DIR}}.git" {{SUBREPO_ADMIN_DIR}}
-cd {{SUBREPO_ADMIN_DIR}}
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-admin-web.git" ai-project-admin-web
+cd ai-project-admin-web
 git config user.name  "$GIT_USER_NAME"
 git config user.email "$GIT_USER_EMAIL"
 git remote add upstream https://gitee.com/yudaocode/yudao-ui-admin-vue3.git
@@ -92,8 +92,8 @@ git remote add upstream https://gitee.com/yudaocode/yudao-ui-admin-vue3.git
 ## 7. 初始化移动端仓
 
 ```bash
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_APP_DIR}}.git" {{SUBREPO_APP_DIR}}
-cd {{SUBREPO_APP_DIR}}
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-uniapp.git" ai-project-uniapp
+cd ai-project-uniapp
 git config user.name  "$GIT_USER_NAME"
 git config user.email "$GIT_USER_EMAIL"
 ```
@@ -141,9 +141,9 @@ git remote -v
 git config user.name
 git config user.email
 
-git -C {{SUBREPO_BACKEND_DIR}}  status -sb
-git -C {{SUBREPO_ADMIN_DIR}}    status -sb
-git -C {{SUBREPO_APP_DIR}}      status -sb
+git -C ai-project-server  status -sb
+git -C ai-project-admin-web    status -sb
+git -C ai-project-uniapp      status -sb
 ```
 
 若发现用户已有未提交改动,**不得回滚**;只在本次任务范围内追加或提交用户明确要求提交的内容。

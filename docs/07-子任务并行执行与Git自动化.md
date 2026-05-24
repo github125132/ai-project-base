@@ -57,9 +57,9 @@ feature/p0-01-base-基地管理     # 管理端子仓(同名,独立仓)
 
 子仓默认分支:
 
-- `{{SUBREPO_BACKEND_DIR}}`: `master-jdk17`
-- `{{SUBREPO_ADMIN_DIR}}`: `master`
-- `{{SUBREPO_APP_DIR}}`: `master`
+- `ai-project-server`: `master-jdk17`
+- `ai-project-admin-web`: `master`
+- `ai-project-uniapp`: `master`
 
 ## 4. 单子任务的标准执行序列
 
@@ -67,7 +67,7 @@ feature/p0-01-base-基地管理     # 管理端子仓(同名,独立仓)
 
 ```bash
 # 子仓内:从默认分支切出 feature
-cd {{SUBREPO_BACKEND_DIR}}
+cd ai-project-server
 git fetch origin
 git checkout -b feature/{stem} origin/master-jdk17
 ```
@@ -149,15 +149,15 @@ AI 在以下时机**自动执行**对应 Git 动作,无需用户确认:
 
 | 日期 | 仓库 | 变更内容 | 说明 |
 |------|------|----------|------|
-| 2026-05-18 | {{SUBREPO_BACKEND_DIR}} | 新建 base 表 + DO + Mapper | DDL 已写入 sql/mysql/{{DB_DUMP_FILE}} |
-| 2026-05-19 | {{SUBREPO_ADMIN_DIR}} | 列表 + 表单弹窗 + 字典 | 字典走 dict-tag 分支 |
+| 2026-05-18 | ai-project-server | 新建 base 表 + DO + Mapper | DDL 已写入 sql/mysql/gap-tables.sql |
+| 2026-05-19 | ai-project-admin-web | 列表 + 表单弹窗 + 字典 | 字典走 dict-tag 分支 |
 
 ## 提交记录
 
 | 仓库 | 分支 | 提交信息 | 提交哈希 |
 |------|------|----------|----------|
-| {{SUBREPO_BACKEND_DIR}} | feature/p0-01-base-基地管理 → master-jdk17 | 后端: 基地管理 CRUD | abc1234 |
-| {{SUBREPO_ADMIN_DIR}} | feature/p0-01-base-基地管理 → master | 管理端: 基地管理列表与表单 | def5678 |
+| ai-project-server | feature/p0-01-base-基地管理 → master-jdk17 | 后端: 基地管理 CRUD | abc1234 |
+| ai-project-admin-web | feature/p0-01-base-基地管理 → master | 管理端: 基地管理列表与表单 | def5678 |
 ```
 
 ## 8. 完成判定

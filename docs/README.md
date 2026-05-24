@@ -27,9 +27,9 @@ AI 与新成员接手时按以下顺序阅读，**其他文档不再单独维护
 9. [07-子任务并行执行与Git自动化.md](./07-子任务并行执行与Git自动化.md) —— 分支、并行、自动提交/合并/推送协议
 10. `docs/progress/` —— 与本次任务相关的功能设计与开发记录
 11. 涉及的子仓 AGENTS.md：
-    - `{{SUBREPO_BACKEND_DIR}}/AGENTS.md`
-    - `{{SUBREPO_ADMIN_DIR}}/AGENTS.md`
-    - `{{SUBREPO_APP_DIR}}/AGENTS.md`
+    - `ai-project-server/AGENTS.md`
+    - `ai-project-admin-web/AGENTS.md`
+    - `ai-project-uniapp/AGENTS.md`
 
 ## 多 AI 工具兼容
 

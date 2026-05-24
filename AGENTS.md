@@ -1,4 +1,4 @@
-# {{PROJECT_NAME_CN}}
+# 中药材GAP基地全流程服务平台
 
 > 本仓基于**通用基线项目模板**生成。任何 AI 会话接手时,**必须按三阶段顺序工作**:
 >
@@ -10,9 +10,9 @@
 
 ## 项目身份
 
-- 项目代码:`{{PROJECT_CODE}}`
-- 一句话描述:{{PROJECT_DESC}}
-- 风格定位:{{PROJECT_THEME}}
+- 项目代码:`gap`
+- 一句话描述:面向中药材规范化种植基地的 GAP 合规与全流程服务平台
+- 风格定位:专业合规、政务级、药企认可、科技清爽、绿色中药材主题
 - 支持端:PC 管理后台、手机 APP、(可选)大屏驾驶舱、(可选)外部展示 H5、(可选)线下物料
 
 业务模块、多端范围、UI 原则的完整说明见 [docs/01-项目要求.md](docs/01-项目要求.md)。
@@ -21,9 +21,9 @@
 
 | 层 | 技术 | 子目录 | 远端仓 |
 |----|------|--------|--------|
-| 后端 | Java 17 + Spring Boot 3 + ruoyi-vue-pro | `{{SUBREPO_BACKEND_DIR}}/` | `{{GIT_INTERNAL_GROUP}}/{{SUBREPO_BACKEND_DIR}}.git` |
-| 管理端 | Vue 3 + Element Plus + yudao-ui-admin-vue3 | `{{SUBREPO_ADMIN_DIR}}/` | `{{GIT_INTERNAL_GROUP}}/{{SUBREPO_ADMIN_DIR}}.git` |
-| 移动端 | uniapp + Vue 3 + TypeScript | `{{SUBREPO_APP_DIR}}/` | `{{GIT_INTERNAL_GROUP}}/{{SUBREPO_APP_DIR}}.git` |
+| 后端 | Java 17 + Spring Boot 3 + ruoyi-vue-pro | `ai-project-server/` | `github125132/ai-project-server.git` |
+| 管理端 | Vue 3 + Element Plus + yudao-ui-admin-vue3 | `ai-project-admin-web/` | `github125132/ai-project-admin-web.git` |
+| 移动端 | uniapp + Vue 3 + TypeScript | `ai-project-uniapp/` | `github125132/ai-project-uniapp.git` |
 | 大屏端 | Web 可视化 | 待定 | 后续规划 |
 | 外部 H5 | 移动端 H5 | 待定 | 后续规划 |
 
@@ -43,21 +43,21 @@
 # 用户无需手动编辑配置
 
 # 1. 拉取三个子仓(若尚未存在)
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_BACKEND_DIR}}.git" {{SUBREPO_BACKEND_DIR}}
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_ADMIN_DIR}}.git"   {{SUBREPO_ADMIN_DIR}}
-git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/{{GIT_INTERNAL_GROUP}}/{{SUBREPO_APP_DIR}}.git"     {{SUBREPO_APP_DIR}}
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-server.git" ai-project-server
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-admin-web.git"   ai-project-admin-web
+git clone "http://${GIT_INTERNAL_USER}@${GIT_INTERNAL_HOST}/github125132/ai-project-uniapp.git"     ai-project-uniapp
 
 # 2. 数据库与 Redis
 #    见 docs/03-数据库初始化引导.md
 
 # 3. 启动后端
-cd {{SUBREPO_BACKEND_DIR}} && mvn spring-boot:run -pl yudao-server
+cd ai-project-server && mvn spring-boot:run -pl yudao-server
 
 # 4. 启动管理端
-cd {{SUBREPO_ADMIN_DIR}} && pnpm install && pnpm dev
+cd ai-project-admin-web && pnpm install && pnpm dev
 
 # 5. 启动移动端
-cd {{SUBREPO_APP_DIR}} && pnpm install && pnpm dev:h5
+cd ai-project-uniapp && pnpm install && pnpm dev:h5
 ```
 
 ## 不可变基础 vs 项目专属内容
@@ -82,7 +82,7 @@ AI 在任何阶段都必须区分以下两类内容,**不可变基础不得随�
 - `docs/01-项目要求.md` 的业务模块、多端范围、UI 原则三个 `TODO` 区段
 - `docs/05-项目开发进度总览.md` 的"业务模块进度"、"最近变更"、"风险"、"排期"四张表
 - `docs/progress/` 下所有子任务设计与开发记录
-- 子仓内业务代码:后端 `{{BACKEND_MODULE_NAME}}`、前端 `{{ADMIN_VIEW_ROOT}}` 与 `{{ADMIN_API_ROOT}}`、移动端业务页面
+- 子仓内业务代码:后端 `yudao-module-gap`、前端 `gap` 与 `gap`、移动端业务页面
 
 ## 强约束(所有端必须遵守)
 
@@ -125,6 +125,6 @@ AI 在任何阶段都必须区分以下两类内容,**不可变基础不得随�
 
 - 后端框架:<https://gitee.com/zhijiantianya/ruoyi-vue-pro>
 - 后端框架文档:<https://doc.iocoder.cn>
-- 后端开发规范:[{{SUBREPO_BACKEND_DIR}}/AGENTS.md]({{SUBREPO_BACKEND_DIR}}/AGENTS.md)
-- 管理端开发规范:[{{SUBREPO_ADMIN_DIR}}/AGENTS.md]({{SUBREPO_ADMIN_DIR}}/AGENTS.md)
-- 移动端开发规范:[{{SUBREPO_APP_DIR}}/AGENTS.md]({{SUBREPO_APP_DIR}}/AGENTS.md)
+- 后端开发规范:[ai-project-server/AGENTS.md](ai-project-server/AGENTS.md)
+- 管理端开发规范:[ai-project-admin-web/AGENTS.md](ai-project-admin-web/AGENTS.md)
+- 移动端开发规范:[ai-project-uniapp/AGENTS.md](ai-project-uniapp/AGENTS.md)
